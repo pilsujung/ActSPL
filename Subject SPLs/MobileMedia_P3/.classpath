@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="evosuite-tests1"/>
+	<classpathentry kind="src" path="evosuite-tests2"/>
+	<classpathentry kind="src" path="evosuite-tests3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/user/Downloads/eclipse-java-mars-2-win32-x86_64/eclipse/plugins/org.evosuite.plugins.eclipse.deps_1.0.7.201806011952/lib/evosuite.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Downloads/eclipse-java-mars-2-win32-x86_64/MobileMedia_P1/jars/cldc_1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Downloads/eclipse-java-mars-2-win32-x86_64/MobileMedia_P1/jars/microemu-jsr-120-2.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Downloads/eclipse-java-mars-2-win32-x86_64/MobileMedia_P1/jars/microemu-jsr-135-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/Downloads/eclipse-java-mars-2-win32-x86_64/MobileMedia_P1/jars/midp_2.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
