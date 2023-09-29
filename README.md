@@ -6,6 +6,8 @@ The materials include the followings:
 1) Subject SPLs, product families and test cases
 2) The bytecode instrumentation tool based on BCEL
 3) ActSPL prototype tool
+   - the version for Java projects
+   - the version for Python projects
 
 * Prerequisites for ActSPL tool
   1) Eclipse Mars.2 4.5.2
