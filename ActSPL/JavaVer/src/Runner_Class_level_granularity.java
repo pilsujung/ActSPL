@@ -119,7 +119,7 @@ public class Runner_Class_level_granularity {
 		//System.out.println("Total # of TCs: " + cnt);
 		saveTraceability(TrMatrix);
 		
-		setTCs("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\ActSPL\\" + projectName + "_TCs.xml");
+		setTCs("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\ActSPL\\" + projectName + "10_TCs.xml");
 		HashSet<String> optimalTCs = optimalCase(Main.valueForOptimal-1);
 		HashSet<String> tmp = new HashSet<String>();
 		for(String tc : optimalTCs){
@@ -269,6 +269,12 @@ public class Runner_Class_level_granularity {
 		HashSet<String> newTCs = new HashSet<String>();
 		ArrayList<String> keyList = new ArrayList<String>(testCases.keySet());
 		Collections.sort(keyList);
+		
+		if(keyList.size() >= 10){
+			String rm = keyList.remove(1);
+			keyList.add(rm);
+		}
+		
 		Iterator<String> iterator = keyList.iterator();
 		
 		for(int i = 0; iterator.hasNext(); i++){

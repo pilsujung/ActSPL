@@ -70,7 +70,7 @@ public class Runner_Method_level_granularity {
 		HashSet<String> selected = new HashSet<String>();
 		
 		long e0 = System.currentTimeMillis();
-		hashingCodeUnits(dir);		// list of hash values of code units in p
+		hashingCodeUnits(dir, P);		// list of hash values of code units in p
 		long e1 = System.currentTimeMillis();
 		System.out.println("Preprocessing: " + (e1 - e0)+" ms done");
 		
@@ -90,8 +90,6 @@ public class Runner_Method_level_granularity {
 				pList += "," + P;			// reusing the existing test cases for P
 				v.set(0, pList);
 				TrMatrix.put(t, v);
-				if(t == null)
-					break;
 			}
 		}
 		long e2 = System.currentTimeMillis();
@@ -116,13 +114,9 @@ public class Runner_Method_level_granularity {
 					hashValues = new ArrayList<String>();
 				}
 				TC = s;
-			}else{
-//				File f = new File("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\ActSPL\\bin\\Main.class");
-//				String h = hashing(f);
-			
+			}else{		
 				String ss[] = s.split("\\[");
 				
-				String path = P + "\\bin." + ss[0].replaceAll("<", "").replaceAll(">", "") + "()";
 				hashValues.add(ss[1].substring(0, ss[1].length()-1));
 			}
 		}
@@ -133,7 +127,7 @@ public class Runner_Method_level_granularity {
 		// System.out.println("Total # of TCs: " + cnt);
 		saveTraceability(TrMatrix);
 		
-		setTCs("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\SPLTestSelection\\" + projectName + "_TCs.xml");
+		setTCs("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\ActSPL\\" + projectName + "10_TCs.xml");
 		HashSet<String> optimalTCs = optimalCase(Main.valueForOptimal-1);
 		HashSet<String> tmp = new HashSet<String>();
 		for(String tc : optimalTCs){
@@ -233,10 +227,10 @@ public class Runner_Method_level_granularity {
 		}
 	}
 	
-	public void hashingCodeUnits(File file) throws FileNotFoundException, IOException{
+	public void hashingCodeUnits(File file, String P) throws FileNotFoundException, IOException{
 		if(file.isDirectory()) {
 	    	for(File f : file.listFiles()) {
-	    		hashingCodeUnits(f);
+	    		hashingCodeUnits(f, P);
 	        }
 	    }																			
 	    else{	
@@ -255,7 +249,7 @@ public class Runner_Method_level_granularity {
 		    
 		    
 		    try {
-		    	ClassPathRepository classPathRepository = new ClassPathRepository(new org.apache.bcel.util.ClassPath(Main.P + "\\bin"));
+		    	ClassPathRepository classPathRepository = new ClassPathRepository(new org.apache.bcel.util.ClassPath(P + "\\bin"));
 		    	
 		        mod = classPathRepository.loadClass(path);
 		    }
@@ -324,6 +318,12 @@ public class Runner_Method_level_granularity {
 		HashSet<String> newTCs = new HashSet<String>();
 		ArrayList<String> keyList = new ArrayList<String>(testCases.keySet());
 		Collections.sort(keyList);
+		
+		if(keyList.size() >= 10){
+			String rm = keyList.remove(1);
+			keyList.add(rm);
+		}
+		
 		Iterator<String> iterator = keyList.iterator();
 		
 		for(int i = 0; iterator.hasNext(); i++){

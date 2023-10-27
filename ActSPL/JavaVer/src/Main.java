@@ -33,16 +33,9 @@ public class Main {
 	//public static File TrFile = new File("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\ActSPL\\MobileMedia_Tr.xml");
 
 	public static void selectProject() throws IOException{
-		System.out.println("Select a number:");
-		System.out.println("1) BerkeleyDB");
-		System.out.println("2) TankWar");
-		System.out.println("3) Prevayler");
-		System.out.println("4) MRR");
-		System.out.println("5) MobileMedia");
-		
 		Scanner s = new Scanner(System.in);
-		int num = s.nextInt();
-		while (num < 1 || num > 5){
+		int num;
+		do {
 			System.out.println("Select a number:");
 			System.out.println("1) BerkeleyDB");
 			System.out.println("2) TankWar");
@@ -50,13 +43,14 @@ public class Main {
 			System.out.println("4) MRR");
 			System.out.println("5) MobileMedia");
 			num = s.nextInt();
-		}
+		}while(num < 1 || num > 5);
+		
 		s.close();
 		
 		if(num == 1){
 			P = "C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\BerkeleyDB-FH-Java_c.BerkeleyDB_P";
 			TrFile = new File("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\ActSPL\\BerkeleyDB_Tr.xml");
-			maxProductNumber = 7;
+			maxProductNumber = 10;
 		} else if(num == 2){
 			P = "C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\TankWar_P";
 			TrFile = new File("C:\\Users\\user\\Desktop\\eclipse-java-mars-2-win32-x86_64\\ActSPL\\TankWar_Tr.xml");
@@ -91,7 +85,8 @@ public class Main {
 			System.out.println("=================== P" + i + NEW + " ===================");
 			
 			valueForOptimal = i;
-			Runner_Class_level_granularity run = new Runner_Class_level_granularity();
+			//Runner_Class_level_granularity run = new Runner_Class_level_granularity();
+			Runner_Method_level_granularity run = new Runner_Method_level_granularity();
 			if(!pList.contains(P))
 				run.UpdateTC2CodeTraceability(TrMatrix, P+i);
 		}
